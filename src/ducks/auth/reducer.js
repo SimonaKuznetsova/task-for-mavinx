@@ -7,6 +7,7 @@ import {
   SIGN_IN_REQUEST,
   SIGN_OUT_REQUEST,
   SIGN_OUT_SUCCESS,
+  SIGN_OUT_ERROR,
 } from "ducks/auth/const";
 
 const defaultState = {
@@ -43,15 +44,11 @@ export default function reducer(state = defaultState, action) {
       return { ...state, loading: false, error };
 
     case SIGN_OUT_REQUEST:
-      return { ...state, user: null };
+      return { ...state, user: null, loading: true };
     case SIGN_OUT_SUCCESS:
-      return { ...state, user: null };
-    case "ENTER_NAME":
-      return {
-        ...state,
-        loading: false,
-        userData: { firstName: payload.firstName },
-      };
+      return { ...state, user: null, loading: false };
+    case SIGN_OUT_ERROR:
+      return { ...state, user: null, loading: false };
   }
 
   return state;

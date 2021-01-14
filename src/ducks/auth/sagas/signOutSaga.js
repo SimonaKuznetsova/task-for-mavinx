@@ -1,16 +1,32 @@
-// import { call, put } from 'redux-saga/effects'
-// import firebase from 'firebase'
-// import { SIGN_OUT_REQUEST, SIGN_OUT_SUCCESS } from '../const'
+import axios from "axios";
+import { call, put } from "redux-saga/effects";
+import { SIGN_OUT_ERROR, SIGN_OUT_SUCCESS } from "ducks/auth/const";
 
-// export default function* signOutSaga() {
-//     const auth = firebase.auth()
-//     try {
-//         yield call([auth, auth.signOut])
-//         yield put({
-//             type: SIGN_OUT_SUCCESS
-//         })
-//         console.log('I`m unauthorized!!!')
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
+export default function* signOutSaga({ payload: { token } }) {
+  const callApi = "https://prozorro.mavinx.com/api/test/logout";
+  try {
+    const options = {
+      method: "post",
+      url: callApi,
+      params: {
+        token,
+      },
+    };
+
+    const res = yield call(axios, options);
+    console.log("SignOut here!!!");
+
+    if (res) {
+      yield put({
+        type: SIGN_OUT_SUCCESS,
+        payload: res.user,
+        token: res.token,
+      });
+    }
+  } catch (error) {
+    yield put({
+      type: SIGN_OUT_ERROR,
+      error,
+    });
+  }
+}

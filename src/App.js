@@ -16,29 +16,31 @@ function App(props) {
 
   const dispatch = useDispatch();
 
-  const handleSignUp = ({
-    firstName,
-    lastName,
-    nameCustomer,
-    email,
-    phone,
-    role,
-    password,
-    passwordConfirmation,
-  }) => {
-    dispatch(
-      signUp(
-        firstName,
-        lastName,
-        nameCustomer,
-        email,
-        phone,
-        role,
-        password,
-        passwordConfirmation
-      )
-    );
-  };
+  // const handleSignUp = (
+  //   firstName,
+  //   lastName,
+  //   nameCustomer,
+  //   email,
+  //   phone,
+  //   role,
+  //   password,
+  //   passwordConfirmation
+  // ) => {
+  //   dispatch(
+  //     signUp(
+  //       firstName,
+  //       lastName,
+  //       nameCustomer,
+  //       email,
+  //       phone,
+  //       role,
+  //       password,
+  //       passwordConfirmation
+  //     )
+  //   );
+  // };
+
+  const handleSignUp = (data) => dispatch(signUp(data));
 
   return (
     <section className="home">

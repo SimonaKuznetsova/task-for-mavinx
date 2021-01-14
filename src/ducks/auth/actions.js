@@ -1,6 +1,6 @@
 import { SIGN_UP_REQUEST, SIGN_IN_REQUEST, SIGN_OUT_REQUEST } from "./const";
 
-export const signUp = (
+export const signUp = ({
   name,
   surname,
   name_customer,
@@ -8,8 +8,8 @@ export const signUp = (
   phone,
   role,
   password,
-  password_confirmation
-) => {
+  password_confirmation,
+}) => {
   return {
     type: SIGN_UP_REQUEST,
     payload: {

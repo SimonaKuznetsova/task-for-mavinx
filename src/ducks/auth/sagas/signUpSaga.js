@@ -2,7 +2,7 @@ import axios from "axios";
 import { call, put } from "redux-saga/effects";
 import { SIGN_UP_ERROR, SIGN_UP_SUCCESS } from "ducks/auth/const";
 
-export default function* getEmployeesSaga({
+export default function* signUpSaga({
   payload: {
     name,
     surname,
@@ -19,7 +19,7 @@ export default function* getEmployeesSaga({
     const options = {
       method: "post",
       url: callApi,
-      params: {
+      data: {
         name,
         surname,
         name_customer,

@@ -8,5 +8,6 @@ export const SIGN_IN_ERROR = "AUTH/SIGN_IN_ERROR";
 
 export const SIGN_OUT_REQUEST = "AUTH/SIGN_OUT_REQUEST";
 export const SIGN_OUT_SUCCESS = "AUTH/SIGN_OUT_SUCCESS";
+export const SIGN_OUT_ERROR = "AUTH/SIGN_OUT_ERROR";
 
 export const moduleName = "auth";
