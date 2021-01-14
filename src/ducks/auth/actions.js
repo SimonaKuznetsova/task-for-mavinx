@@ -25,7 +25,7 @@ export const signUp = ({
   };
 };
 
-export const signIn = (email, password) => {
+export const signIn = ({ email, password }) => {
   return {
     type: SIGN_IN_REQUEST,
     payload: { email, password },
@@ -35,6 +35,6 @@ export const signIn = (email, password) => {
 export const signOut = (token) => {
   return {
     type: SIGN_OUT_REQUEST,
-    payload: token,
+    token,
   };
 };

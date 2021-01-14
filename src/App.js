@@ -7,9 +7,9 @@ import SignInForm from "views/SignInForm";
 import SignUpForm from "views/SignUpForm";
 import { signUp, signIn } from "ducks/auth/actions";
 
-function App(props) {
-  const handleSignIn = ({ email, password }) => {
-    dispatch(signIn(email, password));
+function App() {
+  const handleSignIn = (data) => {
+    dispatch(signIn(data));
   };
 
   const { registered, auth } = useSelector((store) => store.auth);

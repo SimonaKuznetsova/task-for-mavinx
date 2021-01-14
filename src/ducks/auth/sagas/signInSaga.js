@@ -8,7 +8,7 @@ export default function* signInSaga({ payload: { email, password } }) {
     const options = {
       method: "post",
       url: callApi,
-      params: {
+      data: {
         email,
         password,
       },
@@ -20,8 +20,10 @@ export default function* signInSaga({ payload: { email, password } }) {
     if (res) {
       yield put({
         type: SIGN_IN_SUCCESS,
-        payload: res.user,
-        token: res.token,
+        payload: {
+          token: res.data.token,
+          user: res.data.user,
+        },
       });
     }
   } catch (error) {

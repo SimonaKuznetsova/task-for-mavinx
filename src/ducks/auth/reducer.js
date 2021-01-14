@@ -36,7 +36,8 @@ export default function reducer(state = defaultState, action) {
       return {
         ...state,
         loading: false,
-        user: payload.res,
+        user: payload.user,
+        token: payload.token,
         auth: true,
         error: null,
       };
@@ -44,11 +45,11 @@ export default function reducer(state = defaultState, action) {
       return { ...state, loading: false, error };
 
     case SIGN_OUT_REQUEST:
-      return { ...state, user: null, loading: true };
+      return { ...state, loading: true };
     case SIGN_OUT_SUCCESS:
-      return { ...state, user: null, loading: false };
+      return { ...state, user: null, auth: false, token: null, loading: false };
     case SIGN_OUT_ERROR:
-      return { ...state, user: null, loading: false };
+      return { ...state, loading: false };
   }
 
   return state;
