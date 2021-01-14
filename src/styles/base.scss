@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@700&family=Poppins:wght@200&display=swap");
+
+html,
+body,
+#root,
+.home {
+  height: 100%;
+}
+
+.home {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  flex-direction: column;
+  background-color: rgb(255, 225, 128);
+
+  &__container {
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    width: 85%;
+    height: 80%;
+  }
+
+  &__left {
+    width: 30%;
+    background-color: rgb(255, 227, 168);
+    border-radius: 20px 0 0 20px;
+  }
+
+  &__right {
+    width: 70%;
+    background-color: white;
+    border-radius: 0 20px 20px 0;
+  }
+
+  &__block {
+    height: 100%;
+  }
+
+  .link {
+    text-decoration: none;
+    color: black;
+  }
+}

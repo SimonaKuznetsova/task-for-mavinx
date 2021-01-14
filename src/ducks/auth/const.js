@@ -1,0 +1,12 @@
+export const SIGN_UP_REQUEST = "AUTH/SIGN_UP_REQUEST";
+export const SIGN_UP_SUCCESS = "AUTH/SIGN_UP_SUCCESS";
+export const SIGN_UP_ERROR = "AUTH/SIGN_UP_ERROR";
+
+export const SIGN_IN_REQUEST = "AUTH/SIGN_IN_REQUEST";
+export const SIGN_IN_SUCCESS = "AUTH/SIGN_IN_SUCCESS";
+export const SIGN_IN_ERROR = "AUTH/SIGN_IN_ERROR";
+
+export const SIGN_OUT_REQUEST = "AUTH/SIGN_OUT_REQUEST";
+export const SIGN_OUT_SUCCESS = "AUTH/SIGN_OUT_SUCCESS";
+
+export const moduleName = "auth";
