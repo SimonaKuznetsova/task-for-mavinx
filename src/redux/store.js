@@ -1,21 +1,28 @@
 import { createStore, compose, applyMiddleware } from "redux";
-import { reducer } from "redux/reducer";
+import { createRootReducer } from "redux/reducer";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "redux/saga";
-import thunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { createBrowserHistory } from "history";
+import { routerMiddleware } from "connected-react-router";
+
+export const history = createBrowserHistory();
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [applyMiddleware(sagaMiddleware), applyMiddleware(thunk)];
+const middlewares = applyMiddleware(routerMiddleware(history), sagaMiddleware);
 
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["router"],
 };
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(
+  persistConfig,
+  createRootReducer(history)
+);
 
 const store =
   process.env.NODE_ENV === "development" &&
@@ -23,9 +30,9 @@ const store =
     ? createStore(
         persistedReducer,
         {},
-        compose(...middlewares, window.__REDUX_DEVTOOLS_EXTENSION__())
+        compose(middlewares, window.__REDUX_DEVTOOLS_EXTENSION__())
       )
-    : createStore(persistedReducer, {}, compose(...middlewares));
+    : createStore(persistedReducer, {}, compose(middlewares));
 
 const persistor = persistStore(store);
 

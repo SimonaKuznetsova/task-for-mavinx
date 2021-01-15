@@ -1,6 +1,6 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
-import "styles/Header.scss";
+import "styles/PersonalArea.scss";
 
 const PersonalArea = ({ handleSubmit }) => {
   return (

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { call, put } from "redux-saga/effects";
+import { push } from "connected-react-router";
 import { SIGN_OUT_ERROR, SIGN_OUT_SUCCESS } from "ducks/auth/const";
 
 export default function* signOutSaga({ token }) {
@@ -20,6 +21,8 @@ export default function* signOutSaga({ token }) {
       yield put({
         type: SIGN_OUT_SUCCESS,
       });
+
+      yield put(push("/sign-in"));
     }
   } catch (error) {
     yield put({

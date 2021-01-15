@@ -32,7 +32,6 @@ export default function* signUpSaga({
     };
 
     const res = yield call(axios, options);
-    console.log("SignUp here!!!");
 
     if (res) {
       yield put({

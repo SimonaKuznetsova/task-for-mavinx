@@ -28,25 +28,43 @@ function App() {
   return (
     <section className="all-pages">
       <Header />
-      <Route exact path="/" render={() => <Home />} />
+      <Route
+        exact
+        path="/"
+        render={() => (auth ? <Home /> : <Redirect to="/sign-in" />)}
+      />
       <Route
         path="/personal-area"
-        render={() => <PersonalArea onSubmit={handleSubmit} />}
+        render={() =>
+          auth ? (
+            <PersonalArea onSubmit={handleSubmit} />
+          ) : (
+            <Redirect to="/sign-in" />
+          )
+        }
       />
       <Route
         exact
         path="/sign-in"
-        render={() => <SignInForm onSubmit={handleSignIn} />}
+        render={() =>
+          auth ? (
+            <Redirect to="/personal-area" />
+          ) : (
+            <SignInForm onSubmit={handleSignIn} />
+          )
+        }
       />
       <Route
         exact
         path="/sign-up"
-        render={() => <SignUpForm onSubmit={handleSignUp} />}
+        render={() =>
+          auth ? (
+            <Redirect to="/personal-area" />
+          ) : (
+            <SignUpForm onSubmit={handleSignUp} />
+          )
+        }
       />
-      {registered && <Redirect from="/sign-up" to="/sign-in" />}
-      {auth && <Redirect from="/sign-in" to="/" />}
-      {!auth && <Redirect from="/sign-out" to="/sign-in" />}
-      {!auth && <Redirect from="/personal-area" to="/sign-in" />}
     </section>
   );
 }

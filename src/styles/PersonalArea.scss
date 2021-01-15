@@ -1,0 +1,30 @@
+.personal-area {
+  padding: 60px;
+
+  &__title {
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 330px;
+  }
+
+  &__input {
+    margin-bottom: 10px;
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__submit {
+    background-color: #207720;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
