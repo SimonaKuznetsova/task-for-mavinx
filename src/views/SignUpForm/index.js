@@ -74,7 +74,7 @@ const SignUpForm = ({ handleSubmit }) => {
 
         <span>
           Already have an account?{" "}
-          <Link className="link" to="sign-in">
+          <Link className="link" to="/sign-in">
             Sign In{" "}
           </Link>
         </span>

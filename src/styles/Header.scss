@@ -1,8 +1,8 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 20px 100px;
-  background-color: rgb(255, 255, 168);
+  padding: 15px 60px;
+  background-color: #ffffff;
 
   &__nav {
     display: flex;
@@ -15,8 +15,11 @@
   }
 
   .user-nav {
+    margin-top: 10px;
+    border-radius: 5px;
     position: absolute;
-    background-color: white;
+    left: -190px;
+    background-color: #cec3c3;
     padding: 10px 20px;
     white-space: nowrap;
   }
@@ -24,5 +27,69 @@
   .user-area {
     margin-bottom: 5px;
     display: block;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .search-icon {
+    width: 13px;
+    height: 13px;
+    margin-right: 10px;
+  }
+
+  .site-logo {
+    padding-right: 30px;
+    border-right: 1px solid gray;
+    height: 25px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__search input {
+    border: none;
+    width: 175px;
+  }
+
+  &__link {
+    font-size: 13px;
+    padding-left: 15px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+  }
+
+  .link_about,
+  .link_create {
+    padding-right: 15px;
+  }
+
+  .link_create {
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
+  }
+
+  .user-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background-color: #dedede;
+    border-radius: 50%;
+  }
+
+  .user-icon {
+    width: 13px;
+    height: 13px;
   }
 }

@@ -2,18 +2,10 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 import emailValidator from "email-validator";
-// import { useSelector, useDispatch } from "react-redux";
-// import { getEmployees } from "ducks/employees/actions";
-// import Employees from "views/Employees";
-// import EmployeesBirthday from "views/EmployeesBirthday";
 import "styles/Sign.scss";
 import { ErrorField } from "views/ErrorField";
 
 function SignInForm({ handleSubmit }) {
-  //   const dispatch = useDispatch();
-  //   const { employees } = useSelector((store) => store.employees);
-  //   const _getEmployees = () => dispatch(getEmployees());
-
   return (
     <div className="sign">
       <form className="sign__form" onSubmit={handleSubmit}>
@@ -40,7 +32,7 @@ function SignInForm({ handleSubmit }) {
 
         <span>
           No account yet?{" "}
-          <Link className="link" to="sign-up">
+          <Link className="link" to="/sign-up">
             Sign Up{" "}
           </Link>
         </span>

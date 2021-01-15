@@ -3,56 +3,49 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "styles/Header.scss";
+import Search from "icons/Search";
+import UserNav from "views/UserNav";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector((store) => store.auth);
 
   const [openUserNav, setOpenUserNav] = useState(false);
 
   const { auth } = useSelector((store) => store.auth);
 
-  const onHandleSignOut = () => {
-    setOpenUserNav(false);
-    dispatch(signOut(token));
-  };
-
   return (
     <header className="header">
-      <NavLink to="/" className="link site-logo">
-        Site logo
-      </NavLink>
+      <div className="header__tools">
+        <NavLink to="/" className="link site-logo">
+          Exprts
+        </NavLink>
+
+        <div className="header__search">
+          <Search className="search-icon" />
+          <input type="text" placeholder="Поиск экспертов, навыки" />
+        </div>
+      </div>
 
       <div className="header__nav">
+        <NavLink to="/" className="link header__link">
+          Эксперты
+        </NavLink>
+        <NavLink to="/" className="link header__link">
+          Вопросы
+        </NavLink>
+        <NavLink to="/" className="link header__link link_about">
+          О нас
+        </NavLink>
+        <NavLink to="/" className="link header__link link_create">
+          Создать проект
+        </NavLink>
         {!auth && (
-          <NavLink to="/sign-in" className="link header__sign">
-            Sign In
+          <NavLink to="/sign-in" className="link header__link">
+            Войти
           </NavLink>
         )}
 
-        {auth && (
-          <div className="header__user">
-            <span onClick={() => setOpenUserNav(!openUserNav)}>User Icon</span>
-            {openUserNav && (
-              <div className="user-nav">
-                <NavLink
-                  to="personal-area"
-                  className="link user-area"
-                  onClick={() => setOpenUserNav(false)}
-                >
-                  Personal area
-                </NavLink>
-                <NavLink
-                  to="log-out"
-                  className="link"
-                  onClick={onHandleSignOut}
-                >
-                  Log Out
-                </NavLink>
-              </div>
-            )}
-          </div>
-        )}
+        <UserNav openUserNav={openUserNav} setOpenUserNav={setOpenUserNav} />
       </div>
     </header>
   );

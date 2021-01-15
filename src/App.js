@@ -6,46 +6,33 @@ import Header from "views/Header";
 import SignInForm from "views/SignInForm";
 import SignUpForm from "views/SignUpForm";
 import { signUp, signIn } from "ducks/auth/actions";
+import { editData } from "ducks/edit-data/actions";
+import { Home } from "views/Home";
+import PersonalArea from "views/PersonalArea";
 
 function App() {
   const handleSignIn = (data) => {
     dispatch(signIn(data));
   };
 
-  const { registered, auth } = useSelector((store) => store.auth);
+  const { registered, auth, token } = useSelector((store) => store.auth);
 
   const dispatch = useDispatch();
 
-  // const handleSignUp = (
-  //   firstName,
-  //   lastName,
-  //   nameCustomer,
-  //   email,
-  //   phone,
-  //   role,
-  //   password,
-  //   passwordConfirmation
-  // ) => {
-  //   dispatch(
-  //     signUp(
-  //       firstName,
-  //       lastName,
-  //       nameCustomer,
-  //       email,
-  //       phone,
-  //       role,
-  //       password,
-  //       passwordConfirmation
-  //     )
-  //   );
-  // };
-
   const handleSignUp = (data) => dispatch(signUp(data));
 
+  const handleSubmit = (data) => {
+    dispatch(editData(data, token));
+  };
+
   return (
-    <section className="home">
+    <section className="all-pages">
       <Header />
-      <Route exact path="/" render={() => <h1>Start Page!!!</h1>} />
+      <Route exact path="/" render={() => <Home />} />
+      <Route
+        path="/personal-area"
+        render={() => <PersonalArea onSubmit={handleSubmit} />}
+      />
       <Route
         exact
         path="/sign-in"
@@ -56,8 +43,10 @@ function App() {
         path="/sign-up"
         render={() => <SignUpForm onSubmit={handleSignUp} />}
       />
-      {registered && <Redirect from="sign-up" to="/sign-in" />}
-      {auth && <Redirect from="sign-in" to="/" />}
+      {registered && <Redirect from="/sign-up" to="/sign-in" />}
+      {auth && <Redirect from="/sign-in" to="/" />}
+      {!auth && <Redirect from="/sign-out" to="/sign-in" />}
+      {!auth && <Redirect from="/personal-area" to="/sign-in" />}
     </section>
   );
 }

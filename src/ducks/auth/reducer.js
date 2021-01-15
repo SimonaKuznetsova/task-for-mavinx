@@ -10,6 +10,12 @@ import {
   SIGN_OUT_ERROR,
 } from "ducks/auth/const";
 
+import {
+  EDIT_DATA_REQUEST,
+  EDIT_DATA_SUCCESS,
+  EDIT_DATA_ERROR,
+} from "ducks/edit-data/const";
+
 const defaultState = {
   user: null,
   loading: null,
@@ -49,6 +55,13 @@ export default function reducer(state = defaultState, action) {
     case SIGN_OUT_SUCCESS:
       return { ...state, user: null, auth: false, token: null, loading: false };
     case SIGN_OUT_ERROR:
+      return { ...state, loading: false };
+
+    case EDIT_DATA_REQUEST:
+      return { ...state, loading: true };
+    case EDIT_DATA_SUCCESS:
+      return { ...state, user: payload.user, loading: false };
+    case EDIT_DATA_ERROR:
       return { ...state, loading: false };
   }
 
